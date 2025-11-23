@@ -80,7 +80,7 @@ const MatrixBackground = () => {
 
     // Initialize drops
     for (let i = 0; i < columns; i++) {
-      drops[i] = 1;
+      drops[i] = Math.random() * (height / fontSize);
     }
 
     const draw = () => {
@@ -204,9 +204,6 @@ const Hero = () => {
   return (
     <section className="min-h-screen flex flex-col justify-center px-6 pt-20 max-w-5xl mx-auto relative z-10">
       <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-        <div className="inline-block px-3 py-1 rounded-full border border-zinc-700 bg-zinc-900/80 backdrop-blur-sm text-zinc-300 text-sm font-medium mb-4">
-          Available for Hire
-        </div>
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white">
           Banu Marius-Valentin<br className="hidden md:block" />
         </h1>
