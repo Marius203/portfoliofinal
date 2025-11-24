@@ -13,49 +13,63 @@ import {
 
 /* --- MOCK DATA --- */
 const DATA = {
-  name: "Alex Dev",
-  role: "Computer Science Student & Full Stack Developer",
-  bio: "I'm a senior CS student passionate about building scalable web applications and exploring distributed systems. When I'm not coding, I'm contributing to open source or optimizing algorithms.",
+  name: "Banu Marius",
+  role: "Software Engineering Student & Full Stack Developer",
+  bio: "Software engineering student skilled in backend Java and frontend React development, with strong problem-solving abilities, performance optimization experience, and a passion for building efficient, scalable applications through clean, reliable code.",
   skills: [
-    "React", "TypeScript", "Node.js", "Python", "Go", "Docker", "AWS", "PostgreSQL", "Tailwind CSS", "GraphQL"
+    "React", "TypeScript", "Tailwind CSS", "Java", "Spring Boot", "Python", "C++", "PostgreSQL", "Git", "Pandas", "Spring Security"
   ],
   experience: [
     {
-      company: "TechFlow Inc.",
-      role: "Software Engineering Intern",
-      period: "May 2024 - Aug 2024",
-      description: "Optimized database queries reducing load times by 40%. Implemented a new user authentication flow using OAuth 2.0."
+      company: "D&A Education SRL",
+      role: "Frontend Developer",
+      period: "Jul 2025 - Oct 2025",
+      description: "Developed and deployed a production-ready educational platform built entirely from scratch using React and Tailwind CSS. Implemented EmailJS integration, automated CI/CD on Vercel, and optimized SEO (sitemap, meta tags) for maximum visibility.",
+      link: "https://www.daeducation.ro" // Example link, added for clickability demonstration
     },
     {
-      company: "University Research Lab",
-      role: "Research Assistant",
-      period: "Jan 2024 - Apr 2024",
-      description: "Assisted in analyzing large datasets using Python and Pandas. Developed a visualization dashboard for research findings."
+      company: "Tvarita SRL",
+      role: "Intern",
+      period: "Mar 2025 - Jun 2025",
+      description: "Designed and maintained a high-impact internal system using React, TypeScript, and PostgreSQL. Led the successful migration of a legacy PHP codebase to a modern React architecture, improving performance and user experience.",
+      link: null // Example link
     }
   ],
   projects: [
     {
-      title: "AlgoVisualizer",
-      description: "An interactive visualization tool for sorting and pathfinding algorithms.",
-      tags: ["React", "D3.js", "Algorithms"],
-      link: "#",
-      github: "#"
+      title: "AI Photo Editor",
+      description: "Implemented expert-selection feature improving matches by 35% and reducing revisions by 40% by enabling users to choose specialist types tailored to photo context.",
+      tags: ["React", "Spring Framework", "MySQL"],
+      link: "#", // Main card click usually goes to live demo
+      github: "https://github.com/Marius203/AIPhotoEditor"
     },
     {
-      title: "Distributed Chat",
-      description: "Real-time messaging system built with Go and WebSocket, supporting 10k+ concurrent connections.",
-      tags: ["Go", "WebSocket", "Redis"],
+      title: "Emag Clone",
+      description: "Designed database schema and optimized backend workflow, reducing query latency by 40%. Reduced post-release defects by 41% through automated unit and regression testing.",
+      tags: ["C#", ".NET Framework", "SQL"],
       link: "#",
-      github: "#"
+      github: "https://github.com/cristicretu/UBB-SE-2025-Marketplace"
     },
     {
-      title: "EcoTracker",
-      description: "Mobile-first web app to track personal carbon footprint using gamification elements.",
-      tags: ["React Native", "Firebase", "Node"],
+      title: "Toy Language Interpreter",
+      description: "Engineered a complex interpreter in Java supporting concurrent execution via ForkStmt and automatic garbage collection. Implemented advanced runtime structures including execution stacks, symbol tables, and shared heaps to simulate real-world language processing environments.",
+      tags: ["Java", "Concurrency", "Interpreter Pattern"],
       link: "#",
-      github: "#"
+      github: "https://github.com/marius203/toy-language-interpreter"
+    },
+    {
+      title: "Movie Collection Manager",
+      description: "Architected a full-stack application using Vue.js and Node.js with real-time WebSocket updates for automated movie generation. Integrated Chart.js for dynamic data visualization and implemented infinite scrolling for seamless navigation of large datasets.",
+      tags: ["Vue.js", "Node.js", "PostgreSQL", "WebSockets"],
+      link: "#",
+      github: "https://github.com/marius203/movie-icon"
     }
-  ]
+  ],
+  socials: {
+    email: "banumarius203@icloud.com",
+    linkedin: "https://linkedin.com/in/marius-banu",
+    github: "https://github.com/marius203"
+  }
 };
 
 /* --- VISUAL EFFECTS --- */
@@ -78,7 +92,7 @@ const MatrixBackground = () => {
     const columns = width / fontSize;
     const drops = [];
 
-    // Initialize drops
+    // Initialize drops with random start positions
     for (let i = 0; i < columns; i++) {
       drops[i] = Math.random() * (height / fontSize);
     }
@@ -89,9 +103,8 @@ const MatrixBackground = () => {
       ctx.fillRect(0, 0, width, height);
 
       // Matrix text color
-      // Using a slightly more visible white/green for the effect
       ctx.fillStyle = '#0F0';
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.1)'; // Increased opacity for visibility
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.15)'; // Increased opacity for visibility
 
       ctx.font = `${fontSize}px monospace`;
 
@@ -107,7 +120,7 @@ const MatrixBackground = () => {
       }
     };
 
-    const interval = setInterval(draw, 50);
+    const interval = setInterval(draw, 33);
 
     const handleResize = () => {
       width = window.innerWidth;
@@ -135,10 +148,9 @@ const MatrixBackground = () => {
 /* --- UI COMPONENTS --- */
 
 const Button = ({ children, variant = "primary", className = "", ...props }) => {
-  // Updated variants for dark mode
   const baseStyle = "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-400 disabled:pointer-events-none disabled:opacity-50 h-9 px-4 py-2";
   const variants = {
-    primary: "bg-zinc-100 text-black hover:bg-zinc-200 shadow", // Inverted
+    primary: "bg-zinc-100 text-black hover:bg-zinc-200 shadow",
     outline: "border border-zinc-800 bg-black/50 text-zinc-100 hover:bg-zinc-900 hover:text-white",
     ghost: "hover:bg-zinc-800 hover:text-white text-zinc-300",
     secondary: "bg-zinc-800 text-zinc-100 hover:bg-zinc-700"
@@ -151,11 +163,26 @@ const Button = ({ children, variant = "primary", className = "", ...props }) => 
   );
 };
 
-const Card = ({ children, className = "" }) => (
-  <div className={`rounded-xl border border-zinc-800 bg-black/60 backdrop-blur-sm text-zinc-100 shadow-sm transition-all hover:border-zinc-600 ${className}`}>
-    {children}
-  </div>
-);
+// Updated Card Component to handle click navigation
+const Card = ({ children, className = "", href, ...props }) => {
+  const handleClick = (e) => {
+    // Only navigate if an href is provided AND the click didn't originate 
+    // from an inner link/button (to avoid double actions)
+    if (href && !e.target.closest('a') && !e.target.closest('button')) {
+      window.open(href, '_blank');
+    }
+  };
+
+  return (
+    <div
+      onClick={handleClick}
+      className={`rounded-xlQN border border-zinc-800 bg-black/60 backdrop-blur-sm text-zinc-100 shadow-sm transition-all hover:border-zinc-600 ${href ? 'cursor-pointer hover:bg-zinc-900/40' : ''} ${className}`}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+};
 
 const Badge = ({ children }) => (
   <span className="inline-flex items-center rounded-full border border-zinc-700 bg-zinc-900/50 px-2.5 py-0.5 text-xs font-semibold transition-colors text-zinc-300">
@@ -184,7 +211,7 @@ const Navbar = () => {
       <div className="max-w-5xl mx-auto px-6 flex justify-between items-center">
         <div className="font-bold text-xl tracking-tighter flex items-center gap-2 text-white">
           <Code2 className="w-6 h-6" />
-          <span>{DATA.name}</span>
+          <span>Banu Marius - Dev Portfolio</span>
         </div>
         <div className="hidden md:flex gap-6 text-sm font-medium text-zinc-400">
           <button onClick={() => scrollTo('about')} className="hover:text-white transition-colors">About</button>
@@ -205,17 +232,23 @@ const Hero = () => {
     <section className="min-h-screen flex flex-col justify-center px-6 pt-20 max-w-5xl mx-auto relative z-10">
       <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white">
-          Banu Marius-Valentin<br className="hidden md:block" />
+          {DATA.name} <br className="hidden md:block" />
         </h1>
-        <p className="text-xl text-zinc-400 max-w-2xl leading-relaxed">
+        <p className="text-xl text-zinc-400 max-w-2xl leading-relaxed mt-4">
           {DATA.bio}
         </p>
         <div className="flex gap-4 pt-4">
-          <Button onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}>
+          <Button onClick={() => document.getElementById('experience').scrollIntoView({ behavior: 'smooth' })}>
             View Work
           </Button>
-          <Button variant="outline" onClick={() => window.open('https://github.com', '_blank')}>
+          <Button variant="outline" onClick={() => window.open(DATA.socials.github, '_blank')}>
             <Github className="mr-2 w-4 h-4" /> GitHub
+          </Button>
+          <Button variant="outline" onClick={() => window.location.href = `mailto:${DATA.socials.email}`}>
+            <Mail className="mr-2 w-4 h-4" /> Email
+          </Button>
+          <Button variant="outline" className="border-zinc-800" onClick={() => window.open(DATA.socials.linkedin, '_blank')}>
+            <Linkedin className="mr-2 w-4 h-4" /> LinkedIn
           </Button>
         </div>
       </div>
@@ -236,12 +269,12 @@ const About = () => {
       <div className="grid md:grid-cols-2 gap-12">
         <div className="space-y-6 text-zinc-400 leading-relaxed">
           <p>
-            I am currently pursuing a degree in Computer Science with a focus on Software Engineering and Artificial Intelligence.
-            My journey began when I wrote my first "Hello World" in Python, and since then, I've been hooked on solving complex problems.
+            I am a Software Engineering student at Babeş-Bolyai University with a GPA of 9.6.
+            My passion lies in building efficient, scalable applications and I have a strong foundation in both backend Java and frontend React development.
           </p>
           <p>
-            I believe in writing clean, maintainable code and designing user-centric interfaces.
-            I'm always eager to learn new technologies and methodologies to improve my craft.
+            I strive to write clean, reliable code and solve complex problems through innovative solutions.
+            I am always eager to learn new technologies and contribute to meaningful projects.
           </p>
         </div>
         <div>
@@ -273,8 +306,11 @@ const Experience = () => {
                 <div className="w-3 h-3 bg-white rounded-full" />
               </div>
 
-              {/* Card */}
-              <Card className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 transition-all hover:-translate-y-1">
+              {/* Card - Now passing href for clickability */}
+              <Card
+                href={job.link}
+                className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 transition-all hover:-translate-y-1"
+              >
                 <div className="flex justify-between items-start mb-2">
                   <div>
                     <h3 className="font-bold text-lg text-white">{job.role}</h3>
@@ -283,6 +319,12 @@ const Experience = () => {
                   <span className="text-xs font-mono text-zinc-500 bg-zinc-900 border border-zinc-800 px-2 py-1 rounded">{job.period}</span>
                 </div>
                 <p className="text-zinc-400 text-sm mt-2">{job.description}</p>
+                {/* Visual indicator for link availability */}
+                {job.link && (
+                  <div className="mt-3 flex items-center text-xs text-zinc-500 group-hover:text-zinc-300 transition-colors">
+                    <ExternalLink className="w-3 h-3 mr-1" /> Visit Company
+                  </div>
+                )}
               </Card>
             </div>
           ))}
@@ -298,21 +340,30 @@ const Projects = () => {
       <h2 className="text-3xl font-bold tracking-tight mb-12 flex items-center gap-2 text-white">
         <Globe className="w-6 h-6" /> Personal Projects
       </h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-2 gap-6">
         {DATA.projects.map((project, index) => (
-          <Card key={index} className="flex flex-col h-full overflow-hidden group hover:border-zinc-500 transition-colors">
+          // Pass the main project link (or fallback to github) to the Card
+          <Card
+            key={index}
+            href={project.link && project.link !== '#' ? project.link : project.github}
+            className="flex flex-col h-full overflow-hidden group hover:border-zinc-500 transition-colors"
+          >
             <div className="p-6 flex-1 flex flex-col">
               <div className="flex justify-between items-start mb-4">
                 <div className="p-2 bg-zinc-900 rounded-lg group-hover:bg-white group-hover:text-black transition-colors duration-300 border border-zinc-800">
                   <Code2 className="w-5 h-5" />
                 </div>
                 <div className="flex gap-2">
-                  <a href={project.github} className="text-zinc-500 hover:text-white transition-colors">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-zinc-500 hover:text-whiteQX transition-colors z-20"
+                    title="View Code"
+                  >
                     <Github className="w-5 h-5" />
                   </a>
-                  <a href={project.link} className="text-zinc-500 hover:text-white transition-colors">
-                    <ExternalLink className="w-5 h-5" />
-                  </a>
+
                 </div>
               </div>
               <h3 className="font-bold text-xl mb-2 text-white group-hover:text-zinc-300 transition-colors">{project.title}</h3>
@@ -341,10 +392,10 @@ const Footer = () => {
           <p className="text-zinc-500">Open to opportunities and interesting projects.</p>
         </div>
         <div className="flex gap-4">
-          <Button variant="secondary" onClick={() => window.location.href = `mailto:hello@example.com`}>
+          <Button variant="secondary" onClick={() => window.location.href = `mailto:${DATA.socials.email}`}>
             <Mail className="mr-2 w-4 h-4" /> Email Me
           </Button>
-          <Button variant="outline" className="border-zinc-800">
+          <Button variant="outline" className="border-zinc-800" onClick={() => window.open(DATA.socials.linkedin, '_blank')}>
             <Linkedin className="mr-2 w-4 h-4" /> LinkedIn
           </Button>
         </div>
@@ -358,7 +409,6 @@ const Footer = () => {
 
 export default function App() {
   return (
-    // Changed bg-black to bg-transparent to allow the fixed canvas to show through
     <div className="min-h-screen bg-transparent text-white font-sans selection:bg-zinc-800 selection:text-white">
       <MatrixBackground />
       <Navbar />
