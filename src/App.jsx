@@ -41,7 +41,7 @@ const DATA = {
       description: "Implemented expert-selection feature improving matches by 35% and reducing revisions by 40% by enabling users to choose specialist types tailored to photo context.",
       tags: ["React", "Spring Framework", "MySQL"],
       link: "#", // Main card click usually goes to live demo
-      github: "https://github.com/Marius203/AIPhotoEditor"
+      github: "https://github.com/Marius203/AIPhotoEditor2"
     },
     {
       title: "Emag Clone",
