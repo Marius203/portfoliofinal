@@ -104,7 +104,7 @@ const MatrixBackground = () => {
 
       // Matrix text color
       ctx.fillStyle = '#0F0';
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.15)'; // Increased opacity for visibility
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.06)'; // Increased opacity for visibility
 
       ctx.font = `${fontSize}px monospace`;
 
